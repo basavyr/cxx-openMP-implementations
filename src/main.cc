@@ -7,7 +7,10 @@ int main()
 {
     const int size = 600;
     const int N_REPS = 5;
-    const bool openMP = 0;
+    
+    //?Turn openMP multi-threaded application ON or OFF
+    const bool openMP = 1;
+    
     parallel x(size, openMP);
     x.DO_LOOP();
 }

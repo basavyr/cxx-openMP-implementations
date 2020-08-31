@@ -24,7 +24,7 @@ parallel::~parallel()
     std::cout << "\n";
 }
 
-void parallel::Procedure(int &rep_id)
+void parallel::Procedure(int &rep_id, double &result)
 {
     double count = 0.0;
     for (auto i1 = 0; i1 < n_loops; ++i1)
@@ -37,9 +37,7 @@ void parallel::Procedure(int &rep_id)
             }
         }
     }
-    std::cout << "rep-" << rep_id << " ";
-    // std::cout << sqrt(count) * rep_id;
-    std::cout << "\n";
+    result = sqrt(count * rep_id);
 }
 
 void parallel::DO_LOOP()
@@ -50,14 +48,18 @@ void parallel::DO_LOOP()
     {
         for (auto gamma_id = 15; gamma_id <= 25; ++gamma_id)
         {
-            Procedure(gamma_id);
+            double result = 0;
+            Procedure(gamma_id, result);
+            std::cout << gamma_id << " - " << result << "\n";
         }
     }
     else
     {
         for (auto gamma_id = 15; gamma_id <= 25; ++gamma_id)
         {
-            Procedure(gamma_id);
+            double result = 0;
+            Procedure(gamma_id, result);
+            std::cout << result << "\n";
         }
     }
     duration_ms = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - start).count() / 1000.0);

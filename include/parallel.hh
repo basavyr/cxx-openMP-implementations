@@ -24,7 +24,7 @@ public:
 
 public:
     void DO_LOOP();
-    void Procedure(int &rep_id);
+    void Procedure(int &rep_id,double &result);
 };
 
 #endif // PARALLEL_HH
